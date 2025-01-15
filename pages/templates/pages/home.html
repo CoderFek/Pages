@@ -1,0 +1,41 @@
+{% extends 'pages/main.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid px-0">
+    {% if messages %}
+  
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+  
+    {% endif %}
+</div>
+  
+
+<div class="row justify-content-center my-5">
+    <div class="col-md-5">
+        <!-- Header Card -->
+        <div class="shadow p-3 mt-4 p-5 bg-dark text-white rounded mb-3">
+            <h1 class="text-center">Hi! {{ username }}</h1>
+        </div>
+        
+        <!-- Info Card -->
+        <div class="card">
+            <div class="shadow p-3 card-body">
+                <p>Welcome to Pages! A website demonstrating Django's authentication System.</p>
+                <p style="font-size: large"><a class="text-muted" href="{% url 'profile' %}">Profile</a></p>
+                <p style="font-size: large"><a class="text-muted" href="{% url 'change_password' %}">Change Password</a></p>
+
+                <a href="{% url 'logout' %}" class="btn btn-danger w-100">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

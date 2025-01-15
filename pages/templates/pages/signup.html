@@ -1,0 +1,68 @@
+{% extends 'pages/main.html' %}
+
+
+{% block title %}Sign-Up{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid px-0">
+    {% if messages %}
+  
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+  
+    {% endif %}
+</div>
+  
+
+<div class="row justify-content-center my-5">
+    <div class="col-md-5">
+        <!-- Header Card -->
+        <div class="shadow p-3 mt-4 p-5 bg-dark text-white rounded mb-3">
+            <h1 class="text-center">Sign-Up</h1>
+        </div>
+        
+        <!-- Form -->
+        <form action="." method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                <p>{{ form.email.errors }}</p>
+            </div>
+            <div class="mb-3">
+                Password:
+                {{ form.password1 }}
+                {{ form.password.errors }}
+            </div>
+            <div class="mb-3">
+                Confirm password:
+                {{ form.password2 }}
+                {{ form.password.errors }}
+
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+        
+        <!-- Info Card -->
+        <hr>
+        <div class="card">
+            <div class="shadow p-3 card-body">
+                <p class="text-center">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

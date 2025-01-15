@@ -1,0 +1,43 @@
+{% extends 'pages/main.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid px-0">
+    {% if messages %}
+  
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+  
+    {% endif %}
+</div>
+  
+
+<div class="row justify-content-center my-5">
+    <div class="col-md-5">
+        <!-- Header Card -->
+        <div class="shadow p-3 mt-4 p-5 bg-dark text-white rounded mb-3">
+            <h1 class="text-center">Profile</h1>
+        </div>
+        
+        <!-- Info Card -->
+        <div class="card">
+            <div class="shadow p-3 card-body">
+                <p><strong>Username: </strong>{{ username }}</p>
+                <p><strong>Email: </strong>{{ email }}</p>
+                <p><strong>Date joined: </strong>{{ date_joined }}</p>
+                <p><strong>Last active: </strong>{{ last_active }}</p>
+
+                <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+                <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
